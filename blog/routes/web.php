@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\Users;
+use App\Http\Controllers\UserAuth;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,7 +15,38 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+  Route::get('/',function(){
+  	return view('myform');
+  });
 
-Route::get('/', function () {
-    return view('welcome');
-});
+  Route::view('home','home');
+  Route::view('about','about');
+  Route::view('contact','contact');
+
+
+  Route::get('data',[Users::class,'data']);
+  Route::get('model',[Users::class,'modeldata']);
+  Route::get('api',[Users::class,'apiCall']);
+
+  // Route::view('login','login');	
+  Route::get('/login',function(){
+  		if(session()->has('username')){
+  			return redirect('about');
+  		}
+  		return view('login');
+  });
+  Route::post('user',[UserAuth::class,'userLogin']);
+
+  Route::get('/logout',function(){
+  	if(session()->has('username')){
+  		session()->pull('username');
+  	}
+  	return redirect('login');
+
+  });
+
+
+
+
+
+
