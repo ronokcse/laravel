@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Users;
 use App\Http\Controllers\UserAuth;
+use App\Http\Controllers\AddMember;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,6 +45,22 @@ use App\Http\Controllers\UserAuth;
   	return redirect('login');
 
   });
+
+  Route::view('add','addMember');
+  Route::post('uploadFile',[AddMember::class,'uploadFile']);
+  Route::get('/add/{lang}',function($lang){
+
+  	App::setlocale($lang);
+  	return view('addMember');
+
+  });
+
+  Route::get('list', [AddMember::class,'show']);
+
+
+
+
+
 
 
 
