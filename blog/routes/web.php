@@ -57,6 +57,13 @@ use App\Http\Controllers\AddMember;
 
   Route::get('list', [AddMember::class,'show']);
 
+  Route::view('myform','myform');
+  Route::post('member_add',[AddMember::class,'member_add']);
+  Route::get('delete/{id}',[AddMember::class,'delete']);
+  Route::get('edit/{id}',[AddMember::class,'showdata']);
+  Route::post('update',[AddMember::class,'update']);
+
+
 
 
 
