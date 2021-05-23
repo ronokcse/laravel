@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Users;
 use App\Http\Controllers\UserAuth;
 use App\Http\Controllers\AddMember;
+use App\Mail\SampleMail;
 
 /*
 |--------------------------------------------------------------------------
@@ -62,6 +63,10 @@ use App\Http\Controllers\AddMember;
   Route::get('delete/{id}',[AddMember::class,'delete']);
   Route::get('edit/{id}',[AddMember::class,'showdata']);
   Route::post('update',[AddMember::class,'update']);
+
+    Route::get('/email',function(){
+  		return new SampleMail();
+  });
 
 
 
